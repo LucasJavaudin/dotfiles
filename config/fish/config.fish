@@ -25,20 +25,27 @@ if status is-interactive
     # Open pdf with zathura in new window
     alias zathura='zathura --fork'
 
+    # Check for bat or batcat
     if type -q bat
-        alias cat='bat -P'
-        alias less=bat
+        set -l bat_cmd bat
+    else if type -q batcat
+        set -l bat_cmd batcat
+    end
+
+    if test -n "$bat_cmd"
+        alias cat="$bat_cmd -P"
+        alias less="$bat_cmd"
         function fzf
-            command fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"
+            command fzf --preview "$bat_cmd --color=always --style=numbers --line-range=:500 {}"
         end
         function batdiff
-            command git diff --name-only --relative --diff-filter=d -z $argv | xargs -0 bat --diff
+            command git diff --name-only --relative --diff-filter=d -z $argv | xargs -0 $bat_cmd --diff
         end
         # Use bat to format help texts
-        abbr -a --position anywhere -- --help '--help | bat -plhelp'
-        abbr -a --position anywhere -- -h '-h | bat -plhelp'
+        abbr -a --position anywhere -- --help '--help | $bat_cmd -plhelp'
+        abbr -a --position anywhere -- -h '-h | $bat_cmd -plhelp'
         # Use bat for man pages
-        set -x MANPAGER "bat -plman"
+        set -x MANPAGER "$bat_cmd -plman"
         # set -x BAT_STYLE "changes,header-filename,header-filesize,snip,rule"
     end
 
