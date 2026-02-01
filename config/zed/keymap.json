@@ -1,0 +1,203 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+      "ctrl-shift-t": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-t": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "c": "vim::Left",
+      "t": "vim::Down",
+      "s": "vim::Up",
+      "r": "vim::Right",
+      "ctrl-j": null,
+      "j": ["vim::PushFindForward", { "before": true, "multiline": false }],
+      "shift-j": [
+        "vim::PushFindBackward",
+        { "after": true, "multiline": false }
+      ],
+      // Word motions
+      "é": "vim::NextWordStart",
+      "e": "vim::NextWordEnd",
+      "b": "vim::PreviousWordStart",
+      "shift-e": "vim::PreviousWordEnd",
+      // Subword motions
+      ", é": "vim::NextSubwordStart",
+      ", b": "vim::PreviousSubwordStart",
+      ", e": "vim::NextSubwordEnd",
+      ", shift-e": "vim::PreviousSubwordEnd",
+      "è": "vim::RepeatFind",
+      "È": "vim::RepeatFindReversed",
+      "shift-c": "vim::WindowTop",
+      "shift-r": "vim::WindowBottom",
+      "shift-h": "vim::ToggleReplace",
+      "shift-s": "workspace::Save",
+
+      // "g" commands
+      "g j": "pane::ActivateNextItem",
+      "g shift-j": "pane::ActivatePreviousItem",
+      "g k": "outline::Toggle",
+      "g shift-k": "project_symbols::Toggle",
+      "g t": ["vim::Down", { "display_lines": true }],
+      "g s": ["vim::Up", { "display_lines": true }],
+      "W d": "editor::GoToDefinitionSplit",
+      "W g d": "editor::GoToDefinitionSplit",
+      "W shift-d": "editor::GoToTypeDefinitionSplit",
+      "W g shift-d": "editor::GoToTypeDefinitionSplit",
+      "W space": "editor::OpenExcerptsSplit",
+      "W g space": "editor::OpenExcerptsSplit"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "h": "vim::PushReplace",
+      "k": "vim::Substitute",
+      "l": "vim::PushChange",
+      "shift-t": "vim::JoinLines",
+      "g shift-t": "vim::JoinLinesNoWhitespace",
+      "shift-l": "vim::ChangeToEndOfLine"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "l": "vim::Substitute",
+      "k": "vim::Substitute",
+      "shift-H": "vim::SubstituteLine",
+      "shift-k": "vim::SubstituteLine",
+      "shift-T": "vim::JoinLines",
+      "g shift-T": "vim::JoinLinesNoWhitespace",
+      "h": "vim::PushReplace",
+      "shift-l": ["vim::PushAddSurrounds", {}]
+    }
+  },
+  {
+    "context": "vim_mode == helix_normal",
+    "bindings": {
+      "i": "vim::InsertBefore",
+      "a": "vim::InsertAfter",
+      "d": "vim::HelixDelete",
+      "é": "vim::NextWordStart",
+      "e": "vim::NextWordEnd",
+      "b": "vim::PreviousWordStart",
+
+      "c": "vim::Left",
+      "t": "vim::Down",
+      "s": "vim::Up",
+      "r": "vim::Right"
+    }
+  },
+  {
+    "context": "vim_operator == c",
+    "bindings": {
+      "l": "vim::CurrentLine"
+    }
+  },
+  {
+    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    "bindings": {
+      // window related commands (ctrl-w X)
+      "W left": "workspace::ActivatePaneLeft",
+      "W right": "workspace::ActivatePaneRight",
+      "W up": "workspace::ActivatePaneUp",
+      "W down": "workspace::ActivatePaneDown",
+      "W ctrl-c": "workspace::ActivatePaneLeft",
+      "W ctrl-r": "workspace::ActivatePaneRight",
+      "W ctrl-s": "workspace::ActivatePaneUp",
+      "W ctrl-t": "workspace::ActivatePaneDown",
+      "W c": "workspace::ActivatePaneLeft",
+      "W r": "workspace::ActivatePaneRight",
+      "W s": "workspace::ActivatePaneUp",
+      "W t": "workspace::ActivatePaneDown",
+      "W shift-left": "workspace::SwapPaneLeft",
+      "W shift-right": "workspace::SwapPaneRight",
+      "W shift-up": "workspace::SwapPaneUp",
+      "W shift-down": "workspace::SwapPaneDown",
+      "W shift-c": "workspace::SwapPaneLeft",
+      "W shift-r": "workspace::SwapPaneRight",
+      "W shift-s": "workspace::SwapPaneUp",
+      "W shift-t": "workspace::SwapPaneDown",
+      "W >": "vim::ResizePaneRight",
+      "W <": "vim::ResizePaneLeft",
+      "W -": "vim::ResizePaneDown",
+      "W +": "vim::ResizePaneUp",
+      "W _": "vim::MaximizePane",
+      "W =": "vim::ResetPaneSizes",
+      "W g j": "pane::ActivateNextItem",
+      "W ctrl-g j": "pane::ActivateNextItem",
+      "W g shift-j": "pane::ActivatePreviousItem",
+      "W ctrl-g shift-j": "pane::ActivatePreviousItem",
+      "W w": "workspace::ActivateNextPane",
+      "W ctrl-w": "workspace::ActivateNextPane",
+      "W p": "workspace::ActivatePreviousPane",
+      "W ctrl-p": "workspace::ActivatePreviousPane",
+      "W shift-w": "workspace::ActivatePreviousPane",
+      "W ctrl-shift-w": "workspace::ActivatePreviousPane",
+      "W ctrl-v": "pane::SplitVertical",
+      "W v": "pane::SplitVertical",
+      "W shift-h": "pane::SplitHorizontal",
+      "W ctrl-h": "pane::SplitHorizontal",
+      "W h": "pane::SplitHorizontal",
+      "W ctrl-d": "pane::CloseActiveItem",
+      "W d": "pane::CloseActiveItem",
+      "W ctrl-q": "pane::CloseActiveItem",
+      "W q": "pane::CloseActiveItem",
+      "W ctrl-a": "pane::CloseAllItems",
+      "W a": "pane::CloseAllItems",
+      "W ctrl-o": "workspace::CloseInactiveTabsAndPanes",
+      "W o": "workspace::CloseInactiveTabsAndPanes",
+      "W ctrl-n": "workspace::NewFileSplitHorizontal",
+      "W n": "workspace::NewFileSplitHorizontal"
+    }
+  },
+  {
+    // netrw compatibility
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "c": "project_panel::CollapseSelectedEntry",
+      "t": "menu::SelectNext",
+      "s": "menu::SelectPrevious",
+      "r": "project_panel::ExpandSelectedEntry",
+      "j": "project_panel::OpenPermanent",
+      "k": "project_panel::OpenWithSystem"
+    }
+  },
+  {
+    "context": "OutlinePanel && not_editing",
+    "bindings": {
+      "t": "menu::SelectNext",
+      "s": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList",
+    "use_key_equivalents": true,
+    "bindings": {
+      "s": "menu::SelectPrevious",
+      "t": "menu::SelectNext"
+    }
+  }
+]

@@ -1,0 +1,70 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+    name = LucasJavaudin
+    email = lucas@lucasjavaudin.com
+
+[init]
+    defaultBranch = main
+
+[push]
+
+[alias]
+    c = commit
+    s = status
+    co = checkout
+    df = diff --color --color-words --abbrev
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[diff]
+    colorMoved = plain  # plain seems just _barely_ better than default.
+    renames = copies
+    # A la `git submodule summary`
+    submodule = log
+    # Histogram is best. https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    algorithm = histogram
+
+# so much color
+[color]
+    ui = auto
+[color "diff"]  # i still love these choices in 2022.
+    meta = yellow bold
+    commit = green bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+    newMoved = cyan dim
+    oldMoved = blue dim
+    newMovedAlternative = cyan italic
+    oldMovedAlternative = blue italic
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+
+[log]
+    date = human
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+[pull]
+    # ff if possible, otherwise, merge commit. I prefer merge commits vs rebase on pull.
+    ff = true
+    default = current
+
+[commit]
+    # include whole diff in message composition screen
+    verbose = true

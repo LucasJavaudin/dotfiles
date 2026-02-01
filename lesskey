@@ -1,0 +1,6 @@
+# Remap navigation keys for BÉPO layout
+# Scroll down (default: j or Down Arrow)
+t     forw-line
+
+# Scroll up (default: k or Up Arrow)
+s     back-line

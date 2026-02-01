@@ -1,0 +1,88 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "default_model": {
+      "provider": "mistral",
+      "model": "codestral-latest",
+    },
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 13,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "soft_wrap": "none",
+  "gutter": {
+    "line_numbers": true,
+    // "code_actions": false,
+    "folds": false,
+    "runnables": false,
+  },
+  "terminal": {
+    "dock": "right",
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "ty", "!pyright", "!pylsp", "!basedpyright"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_action": "source.organizeImports.ruff",
+        },
+        {
+          "code_action": "source.fixAll.ruff",
+        },
+        {
+          "language_server": {
+            "name": "ruff",
+          },
+        },
+      ],
+      "preferred_line_length": 100,
+      "soft_wrap": "none",
+      "wrap_guides": [100],
+    },
+    "Markdown": {
+      "preferred_line_length": 100,
+      "wrap_guides": [100],
+    },
+  },
+  "lsp": {
+    "ty": {
+      "settings": {
+        "disableLanguageServices": false,
+        "diagnosticMode": "workspace",
+      },
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lineLength": 100,
+          "lint": {
+            "preview": true,
+          },
+        },
+      },
+    },
+    "typos": {
+      "initialization_options": {
+        // Diagnostic severity within Zed. "Error" by default, can be:
+        // "Error", "Hint", "Information", "Warning"
+        "diagnosticSeverity": "Information",
+        // Minimum logging level for the LSP, displayed in Zed's logs. "info" by default, can be:
+        // "debug", "error", "info", "off", "trace", "warn"
+        "logLevel": "info",
+      },
+    },
+  },
+  "vim_mode": true,
+}
