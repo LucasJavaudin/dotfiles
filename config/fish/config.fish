@@ -27,9 +27,9 @@ if status is-interactive
 
     # Check for bat or batcat
     if type -q bat
-        set -l bat_cmd bat
+        set bat_cmd bat
     else if type -q batcat
-        set -l bat_cmd batcat
+        set bat_cmd batcat
     end
 
     if test -n "$bat_cmd"
