@@ -50,7 +50,7 @@ if status is-interactive
             command eza -lF --color --group-directories-first --no-permissions --no-user $argv
         end
         function la
-            command eza -lhAF --color --group-directories-first $argv
+            command eza -lhgAF --color --group-directories-first $argv
         end
     else
         function ls
